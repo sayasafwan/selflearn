@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qualification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .biodata-container {
+            width: 60%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: rgb(138, 50, 160);
+        }
+        .combo-container {
+            display: flex; /* Use flexbox to align combo boxes side by side */
+            justify-content: space-between; /* Space between combo boxes */
+            gap: 20px; /* Space between the two combo boxes */
+            margin-bottom: 10px; /* Space below the combo boxes */
+        }
+        .combo-container select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .grades {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="biodata-container">
+        <h2>My Qualification</h2>
+        <div class="combo-container">
+            <select id="schoolOptions" onchange="showGrades()">
+                <option value="">School</option>
+                <option value="upsr">UPSR</option>
+                <option value="pt3">PT3</option>
+                <option value="spm">SPM</option> 
+            </select>
+
+            <select id="universityOptions" onchange="showUniversityGrades()">
+                <option value="">University</option>
+                <option value="foundation">FOUNDATION</option>
+                <option value="degree">BACHELOR DEGREE</option>
+            </select>
+        </div>
+        <div id="gradesDisplay" class="grades" style="display: none;"></div>
+    </div>
+
+    <script>
+        function showGrades() {
+            const gradesDisplay = document.getElementById('gradesDisplay');
+            const selectedOption = document.getElementById('schoolOptions').value;
+            let grades = '';
+
+            // Clear the gradesDisplay when selecting a different option
+            gradesDisplay.innerHTML = ''; // Clear previous grades
+
+            if (selectedOption === 'upsr') {
+                grades = `
+                    <p><strong>UPSR Grades:</strong></p>
+                    <p>1. Bahasa Melayu Pemahaman: B</p>
+                    <p>2. Bahasa Melayu Penulisan: B</p>
+                    <p>3. Bahasa Inggeris Pemahaman: B</p>
+                    <p>4. Bahasa Inggeris Penulisan: A</p>
+                    <p>5. Matematik: B</p>
+                    <p>6. Sains: B</p>
+                `;
+            } else if (selectedOption === 'pt3') {
+                grades = `
+                    <p><strong>PT3 Grades:</strong></p>
+                    <p>1. Bahasa Inggeris: B</p>
+                    <p>2. Bahasa Melayu: A</p>
+                    <p>2. Bahasa Melayu (Lisan): B</p>
+                    <p>3. Geografi: C</p>
+                    <p>4. Matematik: C</p>
+                    <p>5. Pendidikan Islam: C</p>
+                    <p>6. Reka Bentuk & Teknologi: C</p>
+                    <p>7. Sejarah: C</p>
+                    <p>8. Sains: C</p>
+                `;
+            } else if (selectedOption === 'spm') {
+                grades = `
+                    <p><strong>SPM Grades:</strong></p>
+                    <p>1. Bahasa Melayu: A-</p>
+                    <p>2. Bahasa Inggeris: B+</p>
+                    <p>3. Pendidikan Islam: A-</p>
+                    <p>4. Sejarah: C+</p>
+                    <p>5. Matematik: A</p>
+                    <p>6. Matematik Tambahan: B+</p>
+                    <p>7. Fizik: A-</p>
+                    <p>8. Kimia: B</p>
+                    <p>9. Biology: A-</p>
+                `;
+            }
+
+            gradesDisplay.innerHTML = grades; // Update the grades display
+            gradesDisplay.style.display = grades ? 'block' : 'none'; // Show or hide grades
+        }
+
+        function showUniversityGrades() {
+            const gradesDisplay = document.getElementById('gradesDisplay');
+            const selectedOption = document.getElementById('universityOptions').value;
+            let grades = '';
+
+            // Clear previous grades when selecting a university option
+            gradesDisplay.innerHTML = ''; // Clear previous grades
+
+            if (selectedOption === 'foundation') {
+                grades = `
+                    <p><strong>Foundation Grades:</strong></p>
+                    <p>1. Chemistry: A</p>
+                    <p>2. Mathematics: B</p>
+                    <p>3. Biology: A</p>
+                `;
+            } else if (selectedOption === 'degree') {
+                grades = `
+                    <p><strong>Bachelor Degree Grades:</strong></p>
+                    <p>1. Biology: A</p>
+                    <p>2. Chemistry: A</p>
+                    <p>3. Mathematics: B</p>
+                `;
+            }
+
+            gradesDisplay.innerHTML = grades; // Update the grades display
+            gradesDisplay.style.display = grades ? 'block' : 'none'; // Show or hide grades
+        }
+    </script>
+</body>
+</html>
